@@ -1,0 +1,11 @@
+function bin=hexToBinaryVector(hex,n)
+bin = dec2base(fliplr(hex2dec(hex)),2,n)-'0';
+end
+
+function hex=binaryVectorToHex(bin)
+bin=char(bin+'0');
+for n=0:7 % only for 256 bit numbers
+  hex(n+1,:)=dec2hex(base2dec(bin((1:32)+n*32),2),8);
+end
+hex=hex'; hex=hex(:)';
+end
